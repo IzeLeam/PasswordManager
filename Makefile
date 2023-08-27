@@ -1,5 +1,6 @@
 CC = gcc
-CFLAGS = -Wall -Iinclude
+CFLAGS = -Wall -Wextra
+LDFLAGS = -I include
 
 SRCDIR = src
 OBJDIR = obj
@@ -15,10 +16,10 @@ EXECUTABLE = $(BINDIR)/password_manager
 all: $(EXECUTABLE)
 
 $(EXECUTABLE): $(OBJ) | $(BINDIR)
-	$(CC) $(CFLAGS) -o $@ $^
+	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
-	$(CC) $(CFLAGS) -c -o $@ $<
+	$(CC) $(CFLAGS) -c -o $@ $< $(LDFLAGS)
 
 $(OBJDIR):
 	mkdir -p $(OBJDIR)

@@ -1,6 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -Wextra
-LDFLAGS = -I include -I "C:/Program Files/OpenSSL/include" -L "C:/Program Files/OpenSSL/lib" -lssl -lcrypto
+LDFLAGS = -I include -I "C:/Program Files/OpenSSL/include"
+LDLIBS = -L "C:/Program Files/OpenSSL/lib" -lssl -lcrypto
 
 SRCDIR = src
 OBJDIR = obj
@@ -16,10 +17,10 @@ EXECUTABLE = $(BINDIR)/password_manager
 all: $(EXECUTABLE)
 
 $(EXECUTABLE): $(OBJ) | $(BINDIR)
-	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
+	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS) $(LDLIBS)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
-	$(CC) $(CFLAGS) -c -o $@ $< $(LDFLAGS)
+	$(CC) $(CFLAGS) -c -o $@ $<
 
 $(OBJDIR):
 	mkdir $(OBJDIR)

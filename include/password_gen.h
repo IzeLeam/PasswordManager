@@ -15,8 +15,6 @@ extern const password_structure STRONG;
 extern const password_structure ROBUST;
 extern const password_structure SECURE;
 
-void init_password_gen();
-
 char* generatePassword(const password_structure p0);
 
 #endif

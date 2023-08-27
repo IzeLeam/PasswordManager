@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 #include "../include/password_gen.h"
-
+#include "../include/menus.h"
 
 int main(int argc, char** argv) {
 
@@ -13,16 +13,14 @@ int main(int argc, char** argv) {
     printf("|  _   _ _|\n");
     printf("| | | |_ _ \n");
     printf("|_| |_ _ _|\n");
-
-    printf("\nInitializing criterias...\n");
-    init_password_gen();
-    printf("Criterias initialized\n");
-
     printf("\nApplication Hash launched\n");
+
+    print_main_menu();
+
 
     char* password = generatePassword(WEAK);
     
-    printf("Mot de passe généré : %s\n", password);
+    printf("Mot de passe genere : %s\n", password);
     
     free(password);
     return 0;

@@ -4,14 +4,12 @@
 
 #include "../include/password_gen.h"
 
-void init_password_gen() {
+const password_structure WEAK = {8, 0, 0, 0};
+const password_structure MEDIUM = {12, 2, 2, 0};
+const password_structure STRONG = {22, 6, 4, 0};
+const password_structure ROBUST = {44, 16, 10, 4};
+const password_structure SECURE = {76, 28, 16, 8};
 
-    const password_structure WEAK = {8, 0, 0, 0};
-    const password_structure MEDIUM = {12, 2, 2, 0};
-    const password_structure STRONG = {22, 6, 4, 0};
-    const password_structure ROBUST = {44, 16, 10, 4};
-    const password_structure SECURE = {76, 28, 16, 8};
-}
 
 char* generatePassword(const password_structure criteria) {
 

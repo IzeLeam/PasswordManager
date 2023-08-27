@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -Wextra
-LDFLAGS = -I include
+LDFLAGS = -I include -I "C:/Program Files/OpenSSL/include" -L "C:/Program Files/OpenSSL/lib" -lssl -lcrypto
 
 SRCDIR = src
 OBJDIR = obj
@@ -22,10 +22,10 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
 	$(CC) $(CFLAGS) -c -o $@ $< $(LDFLAGS)
 
 $(OBJDIR):
-	mkdir -p $(OBJDIR)
+	mkdir $(OBJDIR)
 
 $(BINDIR):
-	mkdir -p $(BINDIR)
+	mkdir $(BINDIR)
 
 clean:
-	rm -rf $(OBJDIR) $(BINDIR)
+	rmdir /s /q $(OBJDIR) $(BINDIR)

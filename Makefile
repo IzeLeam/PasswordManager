@@ -20,7 +20,7 @@ $(EXECUTABLE): $(OBJ) | $(BINDIR)
 	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS) $(LDLIBS)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
-	$(CC) $(CFLAGS) -c -o $@ $<
+	$(CC) $(CFLAGS) -c -o $@ $< $(LDFLAGS)
 
 $(OBJDIR):
 	mkdir $(OBJDIR)

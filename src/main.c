@@ -4,7 +4,6 @@
 #include "../include/password_gen.h"
 #include "../include/file_manager.h"
 #include "../include/menu.h"
-#include "../include/main_menu.h"
 
 const char* VERSION = "1.0";
 
@@ -19,29 +18,21 @@ int main(int argc, char** argv) {
     printf("/_/ /_/ /_/ /_/ /_ _ _/ /_/ /_/    \n");
     printf("\nApplication Hash %s launched     \n", VERSION);
 
-    if (!directory_exists("..", "passwords")) {
-        printf("create");
-        create_directory("..", "passwords");
+    if (!directory_exists("./", "passwords")) {
+        printf("Creating passwords directory\n");
+        create_directory("./", "passwords");
     }
-    printf("OK");
 
-    return 0;
+    login();
 
     int quit = 0;
-    int mod = MAIN;
+    int mod;
 
     while (!quit) {
-        switch(mod) {
-            case 0 :
-                quit = 1;
-                break;
-            case MAIN :
-                mod = print_main_menu();
-            case PASSWORD_GEN :
-                mod = print_password_gen_menu();
-            default :
-                break;
-        }
+        print_menu("Main", main_menu, size(main_menu));
+        mod = select_in_menu(size(main_menu));
     }
+
+
     return 0;
 }
